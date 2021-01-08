@@ -1,23 +1,30 @@
 import tkinter as tk
 import ImageTk
+
 FILENAME = "res/image1.jpg"
 
-root = tk.Tk()
 
-root.title("Nu Pagadi")
-canvas = tk.Canvas(root)
-canvas.pack(fill="both", expand=True)
+class Game:
+    def start(self):
+        pass
 
-tk_img = ImageTk.PhotoImage(file = FILENAME)
-print(tk_img.height(),tk_img.width())
+if __name__ == '__main__':
+    root = tk.Tk()
 
-canvas.create_image(10,10, image=tk_img, anchor='nw')
+    root.title("Nu Pagadi")
+    canvas = tk.Canvas(root)
+    canvas.pack(fill="both", expand=True)
 
-quit_button = tk.Button(root, text = "PLAY!", command = root.quit, anchor = 'w',
-                    width = 10, activebackground = "#33B5E5")
-quit_button_window = canvas.create_window(10, 10, anchor='nw', window=quit_button)
+    tk_img = ImageTk.PhotoImage(file=FILENAME)
+    print(tk_img.height(), tk_img.width())
 
-w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-root.geometry("%dx%d+0+0" % (w, h))
+    canvas.create_image(10, 10, image=tk_img, anchor='nw')
 
-root.mainloop()
+    quit_button = tk.Button(root, text="PLAY!", command=Game.start, anchor='w',
+                            width=10, activebackground="#33B5E5")
+    quit_button_window = canvas.create_window(10, 10, anchor='nw', window=quit_button)
+
+    w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+    root.geometry("%dx%d+0+0" % (w, h))
+
+    root.mainloop()
